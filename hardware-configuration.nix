@@ -8,20 +8,34 @@
     [ (modulesPath + "/installer/scan/not-detected.nix")
     ];
 
-  boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" "usb_storage" "sd_mod" "rtsx_pci_sdmmc" ];
+  boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" "ahci" "usb_storage" "uas" "usbhid" "sd_mod" "sr_mod" ];
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-amd" ];
   boot.extraModulePackages = [ ];
+  boot.supportedFilesystems = [ "ntfs" ];
 
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/10d4048f-b9b8-434a-a8ab-afa610b85746";
+    { device = "/dev/disk/by-uuid/986cc9ef-8aab-466b-bfa9-0d6c8d1ab499";
       fsType = "ext4";
     };
-
   fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/606E-50F5";
+    { device = "/dev/disk/by-uuid/3C03-E301";
       fsType = "vfat";
     };
+
+  # Alexandria
+  fileSystems."/mnt/e" =
+    { device = "/dev/disk/by-uuid/044ED70B4ED6F480";
+      fsType = "lowntfs-3g";
+      options = [ "rw" "ignore_case" "windows_names" "nls=utf8" "uid=1000" "gid=1000" "dmask=007" "fmask=117" ];
+    };
+    # "x-gvfs-show" # Whatever option that is
+ #  # Riften
+ #  fileSystems."/mnt/r" =
+ #    { device = "/dev/disk/by-uuid/4A7C361B7C36026D";
+ #      fsType = "ntfs3g";
+ #      options = [ "x-gvfs-show" "uid=1000" "gid=1000" "dmask=007" "fmask=117"];
+ #    };
 
   swapDevices = [ ];
 
@@ -30,7 +44,7 @@
   # still possible to use this option, but it's recommended to use it in conjunction
   # with explicit per-interface declarations with `networking.interfaces.<interface>.useDHCP`.
   networking.useDHCP = lib.mkDefault true;
-  # networking.interfaces.wlp2s0.useDHCP = lib.mkDefault true;
+  # networking.interfaces.enp7s0.useDHCP = lib.mkDefault true;
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
