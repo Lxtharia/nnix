@@ -20,6 +20,17 @@
 	efiSupport = true;
 	gfxmodeEfi = "1920x1080";
 	useOSProber = true;
+	theme = pkgs.stdenv.mkDerivation {
+	  pname = "distro-grub-themes";
+	  version = "0.1";
+	  src = pkgs.fetchFromGitHub {
+	    owner = "Lxtharia";
+	    repo = "minegrub-world-sel-theme";
+	    rev = "2d9637455b41faf6bc0b966d9417cf85d79ff3aa";
+	    hash = "sha256-0j8l13hjm0p2n93dilh0yjcbpqzbi2q2sc83wz2wxns833zdhzmn";
+	  };
+	  installPhase = "cp -r minegrub-world-selection $out";
+	};
   };
   boot.loader.timeout = 10;
 
