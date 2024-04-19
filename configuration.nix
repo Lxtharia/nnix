@@ -134,12 +134,22 @@
       neofetch
       cmatrix
       yazi
+      lazygit
       # Media players/viewers
       mpv
       # Big Apps
       krita
+      keepassxc
     ];
   };
+
+  services.syncthing = {
+    enable = true;
+    user = "lin";
+    dataDir = "/home/lin/Documents";    # Default folder for new synced folders
+    configDir = "/home/lin/.config/syncthing";   # Folder for Syncthing's settings and keys
+  };
+
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
