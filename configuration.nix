@@ -72,10 +72,12 @@
 
   # XDG Desktop Portal Configuration
   xdg.portal.wlr.enable = true;
+  xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-kde ];
+  xdg.portal.enable = true;
   xdg.portal.config = {
     # Default portals for all desktops:
     common = {
-      "org.freedesktop.impl.portal.FileChooser" = [ "kde" ];
+      "org.freedesktop.impl.portal.FileChooser" = [ "kde" "gtk" ];
     };
     # On sway use kde or gtk, but use wlr for screenshot and screencast
     sway = {
@@ -160,7 +162,7 @@
     cifs-utils
     tree
     htop
-  ]; 
+  ];
 
   programs.neovim.defaultEditor = true;
   programs.zsh.enable = true;
