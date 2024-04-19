@@ -28,7 +28,7 @@
   fileSystems."/mnt/e" =
     { device = "/dev/disk/by-uuid/044ED70B4ED6F480";
       fsType = "lowntfs-3g";
-      options = [ "rw" "ignore_case" "windows_names" "nls=utf8" "uid=1000" "gid=1000" "dmask=007" "fmask=117" ];
+      options = [ "rw" "ignore_case" "windows_names" "nls=utf8" "uid=1000" "gid=100" "dmask=007" "fmask=117" ];
     };
     # "x-gvfs-show" # Whatever option that is
  #  # Riften
