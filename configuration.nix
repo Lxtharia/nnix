@@ -21,6 +21,16 @@
   efiSupport = true;
   gfxmodeEfi = "1920x1080";
   useOSProber = true;
+  theme = pkgs.stdenv.mkDerivation {
+    name = "minegrub-theme-manual";
+    src = pkgs.fetchFromGitHub {
+      owner = "Lxtharia";
+      repo = "minegrub-theme";
+      rev = "08fe7f2b07e0f39426d53e1a1ab5b071e77b9e39";
+      hash = "sha256-KuvNneagLOiHdchPPgxZ5kmlO4NA+cvWQ/b/idwjVgo=";
+    };
+    installPhase = "cp -r minegrub $out";
+  };
   };
   boot.loader.timeout = 10;
 
