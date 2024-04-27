@@ -57,7 +57,7 @@
 
   # Select fonts
   fonts.packages = with pkgs; [
-    (nerdfonts.override { fonts = [ "FiraCode" "IntelOneMono" ]; })
+    (nerdfonts.override { fonts = [ "NerdFontsSymbolsOnly" "FiraCode" "IntelOneMono" ]; })
     noto-fonts
     noto-fonts-cjk
     noto-fonts-emoji
@@ -130,6 +130,7 @@
       firefox
       thunderbird
       kitty
+      ulauncher
       # Small Tools
       ripgrep
       bat
