@@ -169,6 +169,9 @@
   nixpkgs.config.allowUnfree = true;
 
   # Some environmental variables
+  environment.variables = {
+    "EDITOR" = "nvim";
+  };
   environment.sessionVariables = {
     "GTK_USE_PORTAL" = "1";
   };
@@ -188,6 +191,7 @@
     htop
   ];
 
+  # Only works if neovim enabled and managed over nix
   programs.neovim.defaultEditor = true;
   programs.zsh.enable = true;
 
