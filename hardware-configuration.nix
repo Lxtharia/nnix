@@ -45,6 +45,7 @@
   # still possible to use this option, but it's recommended to use it in conjunction
   # with explicit per-interface declarations with `networking.interfaces.<interface>.useDHCP`.
   networking.useDHCP = lib.mkDefault true;
+  networking.nameservers = [ "192.168.2.222" "1.1.1.1" "9.9.9.9" ];
   # networking.interfaces.enp7s0.useDHCP = lib.mkDefault true;
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
@@ -71,7 +72,7 @@
     # Enable this if you have graphical corruption issues or application crashes after waking
     # up from sleep. This fixes it by saving the entire VRAM memory to /tmp/ instead
     # of just the bare essentials.
-    powerManagement.enable = false;
+    powerManagement.enable = true;
 
     # Fine-grained power management. Turns off GPU when not in use.
     # Experimental and only works on modern Nvidia GPUs (Turing or newer).
@@ -98,9 +99,11 @@
   services.displayManager.sddm.setupScript =
   ''
   xrandr --output DVI-D-0 --auto --primary
-  xrandr --output DP-0 --left-of DVI-D-0  --rotate left --noprimary
-  xrandr --output DP-4 --right-of DVI-D-0 --rotate left --noprimary
+  xrandr --output DP-0 --disable
+  xrandr --output DP-4 --disable
   '';
+  # xrandr --output DP-0 --left-of DVI-D-0  --rotate left --noprimary
+  # xrandr --output DP-4 --right-of DVI-D-0 --rotate left --noprimary
 
 
 }
