@@ -154,11 +154,16 @@
       cmatrix
       yazi
       lazygit
+      zip
+      unzip
       # Media players/viewers
       mpv
       # Big Apps
+      vesktop
       krita
+      blender
       keepassxc
+      obs-studio
     ];
   };
 
@@ -185,8 +190,9 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     # Essentials
+    bash
     git
-    vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+    vim
     neovim
     wget
     # Important
@@ -194,6 +200,9 @@
     cifs-utils
     tree
     htop
+    # bigger packages
+    wireguard-tools
+    wgnord
   ];
 
   # Only works if neovim enabled and managed over nix
