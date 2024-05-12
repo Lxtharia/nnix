@@ -37,6 +37,10 @@
 
   networking.hostName = "Vanixlin"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+  networking.hosts = {
+    "127.0.0.1" = [ "localhost" ];
+    "192.168.2.222" = [ "cassis" "cassis.local" "cassis.lan" ];
+  };
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
