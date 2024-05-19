@@ -134,6 +134,17 @@
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 
+  # Mounting samba is horrible, when it's not available. It just lags out the file manager and terminal
+#  fileSystems."/home/lin/cloud" = {
+#    device = "//cassis/cloud";
+#    fsType = "cifs";
+#    options = [
+#      "credentials=/home/lin/.smb/creds"
+#      "uid=lin"
+#      "x-systemd.automount"
+#    ];
+#  };
+
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.lin = {
     isNormalUser = true;
@@ -179,6 +190,14 @@
     dataDir = "/home/lin/Documents";    # Default folder for new synced folders
     configDir = "/home/lin/.config/syncthing";   # Folder for Syncthing's settings and keys
   };
+
+  # I don't know what this does, but for now it does nothing i think
+  programs.nix-ld.enable = true;
+  programs.nix-ld.libraries = with pkgs; [
+    # Add any missing dynamic libraries for unpackaged programs
+    # here, NOT in environment.systemPackages
+
+  ];
 
 
   # Allow unfree packages
