@@ -31,7 +31,7 @@
     };
     installPhase = "cp -r minegrub-world-selection $out";
   };
-  splashImage = "/boot/theme/dirt.png";
+  splashImage = "/boot/dirt.png";
   };
   boot.loader.timeout = 10;
 
