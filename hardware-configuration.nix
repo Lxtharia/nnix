@@ -27,16 +27,15 @@
   # Alexandria
   fileSystems."/mnt/e" =
     { device = "/dev/disk/by-uuid/044ED70B4ED6F480";
-      fsType = "lowntfs-3g";
+      fsType = "ntfs-3g";
       options = [ "rw" "windows_names" "nls=utf8" "uid=1000" "gid=100" "dmask=007" "fmask=117" ];
     };
-    # "x-gvfs-show" # Whatever option that is
- #  # Riften
- #  fileSystems."/mnt/r" =
- #    { device = "/dev/disk/by-uuid/4A7C361B7C36026D";
- #      fsType = "ntfs3g";
- #      options = [ "x-gvfs-show" "uid=1000" "gid=1000" "dmask=007" "fmask=117"];
- #    };
+  # Riften
+  fileSystems."/mnt/r" =
+    { device = "/dev/disk/by-uuid/4A7C361B7C36026D";
+      fsType = "ntfs-3g";
+      options = [ "rw" "windows_names" "nls=utf8" "uid=1000" "gid=100" "dmask=007" "fmask=117" ];
+    };
 
   swapDevices = [ ];
 
