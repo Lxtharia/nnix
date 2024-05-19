@@ -156,6 +156,8 @@
       lazygit
       zip
       unzip
+      duf
+      fzf
       # Media players/viewers
       mpv
       # Big Apps
@@ -164,7 +166,11 @@
       blender
       keepassxc
       obs-studio
+      freefilesync
     ];
+  };
+  programs.steam = {
+    enable = true;
   };
 
   services.syncthing = {
