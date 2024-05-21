@@ -21,6 +21,7 @@
   efiSupport = true;
   gfxmodeEfi = "1920x1080";
   useOSProber = true;
+  # Minegrub theme
   theme = pkgs.stdenv.mkDerivation {
     name = "minegrub-world-sel-theme-manual";
     src = pkgs.fetchFromGitHub {
@@ -29,9 +30,20 @@
       rev = "90aa7a546d7e9a6de33b5f152a677c7ff8720e84";
       hash = "sha256-uhTUsI9bRr/TWQL9BqWT4OB74isQjVJdHvpgW/w4ayE=";
     };
-    installPhase = "cp -r minegrub-world-selection $out";
+    installPhase = ''
+      cp -r minegrub-world-selection $out
+    '';
   };
   splashImage = "/boot/dirt.png";
+  # Add UEFI option
+  extraEntries = ''
+    # Uefi Settings
+    if [ "''${grub_platform}" == "efi" ]; then
+      menuentry 'UEFI Firmware Settings' --id 'uefi-firmware' {
+        fwsetup
+      }
+    fi
+  '';
   };
   boot.loader.timeout = 10;
 
