@@ -214,6 +214,8 @@
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
+  # Automatically optimize storage space: https://nixos.wiki/wiki/Storage_optimization
+  nix.optimise.automatic = true;
 
   # Some environmental variables
   environment.variables = {
