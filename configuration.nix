@@ -190,6 +190,8 @@
       keepassxc
       obs-studio
       freefilesync
+      filelight
+      syncthingtray
     ];
   };
   programs.steam = {
