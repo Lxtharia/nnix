@@ -1,4 +1,4 @@
-# vim: et ts=2 sw=2 listchars+=leadmultispace\:\|\  list
+# vim: et ts=2 sw=2 listchars+=leadmultispace\:\⎸\  list
 # Edit this configuration file to define what should be installed on
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
@@ -39,7 +39,7 @@
   extraEntries = ''
     # Uefi Settings
     if [ "''${grub_platform}" == "efi" ]; then
-      menuentry 'UEFI Firmware Settings' --id 'uefi-firmware' {
+      menuentry 'UEFI Firmware Settings' --id 'uefi-firmware --class uefi' {
         fwsetup
       }
     fi
@@ -60,6 +60,9 @@
 
   # Enable networking
   networking.networkmanager.enable = true;
+
+  # use resolved cause it suddenly broke?
+  services.resolved.enable = true;
 
   # Set your time zone.
   time.timeZone = "Europe/Berlin";
