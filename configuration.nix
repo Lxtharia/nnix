@@ -166,36 +166,7 @@
     description = "Lin";
     extraGroups = [ "networkmanager" "wheel" ];
     shell = pkgs.zsh;
-    packages = with pkgs; [
-      # Important Packages
-      firefox
-      thunderbird
-      kitty
-      ulauncher
-      # Small Tools
-      ripgrep
-      bat
-      fd
-      neofetch
-      cmatrix
-      yazi
-      lazygit
-      zip
-      unzip
-      duf
-      fzf
-      # Media players/viewers
-      mpv
-      # Big Apps
-      vesktop
-      krita
-      blender
-      keepassxc
-      obs-studio
-      freefilesync
-      filelight
-      syncthingtray
-    ];
+    packages = import ./user_packages.nix pkgs;
   };
   programs.steam = {
     enable = true;
