@@ -39,7 +39,7 @@
   extraEntries = ''
     # Uefi Settings
     if [ "''${grub_platform}" == "efi" ]; then
-      menuentry 'UEFI Firmware Settings' --id 'uefi-firmware --class uefi' {
+      menuentry 'UEFI Firmware Settings' --class uefi --id 'uefi-firmware ' {
         fwsetup
       }
     fi
@@ -92,6 +92,11 @@
     noto-fonts-cjk
     noto-fonts-emoji
   ];
+
+  # Scanner stuff
+  hardware.sane.enable = true; # enables support for SANE scanners
+  hardware.sane.extraBackends = [ pkgs.sane-airscan ];
+  # services.ipp-usb.enable=true;
 
   # Enable the X11 windowing system.
   # services.xserver.enable = true;
@@ -164,7 +169,7 @@
   users.users.lin = {
     isNormalUser = true;
     description = "Lin";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "scanner" ];
     shell = pkgs.zsh;
     packages = import ./user_packages.nix pkgs;
   };
@@ -242,6 +247,13 @@
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
+
+  # Enable avahi to find network scanner
+  services.avahi.enable = true;
+  services.avahi.nssmdns4 = true;
+
+  # Enable Samba for NetBIOS name stuff
+  # services.samba.nsswins = true;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
