@@ -11,6 +11,8 @@
       ./hardware-configuration.nix
     ];
 
+  # nix.settings.experimental-features = [ "nix-command" "flakes" ];
+
   # Bootloader.
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.efi.efiSysMountPoint = "/boot";
@@ -215,12 +217,15 @@
     vim
     neovim
     wget
+    gcc
     # Important
     zsh
     cifs-utils
     tree
     htop
-    # bigger packages
+    # Other packages
+    dig
+    # Bigger packages
     wireguard-tools
     wgnord
   ];
@@ -228,6 +233,7 @@
   # Only works if neovim enabled and managed over nix
   programs.neovim.defaultEditor = true;
   programs.zsh.enable = true;
+  programs.java.enable = true;
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.

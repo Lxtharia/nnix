@@ -33,8 +33,8 @@
   # Riften
   fileSystems."/mnt/r" =
     { device = "/dev/disk/by-uuid/4A7C361B7C36026D";
-      fsType = "ntfs-3g";
-      options = [ "rw" "windows_names" "nls=utf8" "uid=1000" "gid=100" "dmask=007" "fmask=117" ];
+      fsType = "lowntfs-3g";
+      options = [ "rw" "user" "exec" "uid=1000" "gid=100" "dmask=007" "fmask=117" "nls=utf8" "windows_names" ];
     };
 
   swapDevices = [ ];
@@ -58,6 +58,10 @@
     driSupport = true;
     driSupport32Bit = true;
   };
+  # hardware.graphics = {
+  #   enable = true;
+  #   enable32bit = true;
+  # };
 
   # Load nvidia driver for Xorg and Wayland
   services.xserver.videoDrivers = ["nvidia"];
@@ -99,6 +103,8 @@
   ''
   xrandr --output DVI-D-0 --auto --primary
   xrandr --output DP-0 --disable
+  xrandr --output DP-1 --disable
+  xrandr --output DP-3 --disable
   xrandr --output DP-4 --disable
   '';
   # xrandr --output DP-0 --left-of DVI-D-0  --rotate left --noprimary
