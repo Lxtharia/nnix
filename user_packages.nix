@@ -3,31 +3,46 @@ pkgs: with pkgs;
 [
   # Important Packages
   firefox
-  thunderbird
   kitty
   ulauncher
   # Small Tools
   ripgrep
   bat
   fd
-  neofetch
-  cmatrix
-  yazi
-  lazygit
   zip
   unzip
   duf
   fzf
+  jq
+  ffmpeg
+  imagemagick
+  wl-clipboard
+  yt-dlp
+  yazi
+  lazygit
+  nmap
+  rofi-wayland-unwrapped
+  # Cosmetics
+  sl
+  fastfetch
+  hyfetch
+  cmatrix
   # Media players/viewers
   mpv
+  nomacs
   # Big Apps
-  vesktop
-  krita
-  blender
+  thunderbird
   keepassxc
+  vesktop
+  blender
+  krita
   obs-studio
   freefilesync
   filelight
   syncthingtray
   prismlauncher
+  rustup
+  # Other tools
+  skanlite
+  translate-shell
 ]
