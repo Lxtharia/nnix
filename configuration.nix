@@ -11,14 +11,14 @@
       ./hardware-configuration.nix
     ];
 
-  # nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   # Bootloader.
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.efi.efiSysMountPoint = "/boot";
-  boot.loader.systemd-boot.enable = false;
+  boot.loader.systemd-boot.enable = true;
   boot.loader.grub = {
-  enable = true;
+  enable = false;
   device = "nodev";
   efiSupport = true;
   gfxmodeEfi = "1920x1080";
@@ -217,17 +217,21 @@
     vim
     neovim
     wget
-    gcc
     # Important
     zsh
     cifs-utils
     tree
     htop
     # Other packages
+    nh
     dig
+    usbutils
     # Bigger packages
     wireguard-tools
     wgnord
+    # languages
+    gcc
+    rustup
   ];
 
   # Only works if neovim enabled and managed over nix

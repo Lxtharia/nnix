@@ -37,12 +37,17 @@ pkgs: with pkgs;
   blender
   krita
   obs-studio
-  freefilesync
+  pandoc
+  texliveMedium
+  # freefilesync
   filelight
   syncthingtray
   prismlauncher
-  rustup
   # Other tools
   skanlite
   translate-shell
+  footswitch
+  kdePackages.partitionmanager
+  gparted
+
 ]
